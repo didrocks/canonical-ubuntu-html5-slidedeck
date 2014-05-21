@@ -1,8 +1,12 @@
 <!--
+Canonical HTML5 Slide Template.
+
+Adapted from:
 Google IO 2012/2013 HTML5 Slide Template
 
 Authors: Eric Bidelman <ebidel@gmail.com>
          Luke Mahé <lukem@google.com>
+         Didier Roche <didrocks@ubuntu.com>
 
 URL: https://code.google.com/p/io-2012-slides
 -->
@@ -28,17 +32,20 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide class="logoslide nobackground">
     <article class="flexbox vcenter">
-      <span><img src="images/google_developers_logo.png"></span>
+      <span><img src="images/ubuntu_with_title_orange.svg"></span>
     </article>
   </slide>
 
-  <slide class="title-slide segue nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+  <slide class="title-slide segue nobackground dark">
+    <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
-      <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
-      <p data-config-presenter><!-- populated from slide_config.json --></p>
+      <h1 data-config-title><!-- populated from slide_config.js --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.js --></h2>
+      <div class="flexbox vleft">
+        <p data-config-presenter><!-- populated from slide_config.js --></p>
+        <p data-config-eventtitle><!-- populated from slide_config.js --></p>
+      </div>
     </hgroup>
   </slide>
 
@@ -135,10 +142,15 @@ function helloWorld(world) {
   }
 }
 </pre>
+
+<pre class="prettyprint lang-shell" data-lang="shell">
+$ a command line
+$ another command line
+</pre>
 <pre class="prettyprint" data-lang="css">
 &lt;style&gt;
   p { color: pink }
-  b { color: blue }
+  b { color: orange }
 &lt;/style&gt;
 </pre>
 <pre class="prettyprint" data-lang="html">
@@ -306,6 +318,9 @@ function helloWorld(world) {
     <article class="smaller">
       <div class="columns-2">
         <ul>
+          <li class="orange">class="orange"</li>
+          <li class="orange2">class="orange2"</li>
+          <li class="orange3">class="orange3"</li>
           <li class="red">class="red"</li>
           <li class="red2">class="red2"</li>
           <li class="red3">class="red3"</li>
@@ -314,9 +329,10 @@ function helloWorld(world) {
           <li class="blue3">class="blue3"</li>
           <li class="green">class="green"</li>
           <li class="green2">class="green2"</li>
-        </ul>
-        <ul>
           <li class="green3">class="green3"</li>
+          <li class="aubergine">class="aubergine"</li>
+          <li class="aubergine2">class="aubergine2"</li>
+          <li class="aubergine3">class="aubergine3"</li>
           <li class="yellow">class="yellow"</li>
           <li class="yellow2">class="yellow2"</li>
           <li class="yellow3">class="yellow3"</li>
@@ -333,10 +349,10 @@ function helloWorld(world) {
   </slide>
 
   <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Segue Slide  - ubuntu</h2>
+      <h3>Subtitle Placeholder - ubuntu</h3>
     </hgroup>
   </slide>
 
@@ -348,7 +364,7 @@ function helloWorld(world) {
   </slide>
 
   <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right bottom"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <article class="flexbox vleft auto-fadein">
       <q>
         This is an example of quote text.
@@ -376,10 +392,9 @@ function helloWorld(world) {
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <article class="flexbox vleft auto-fadein">
-      <h2>&lt;Thank You!&gt;</h2>
-      <p>Important contact information goes here.</p>
+      <h2>Thank You!</h2>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
@@ -388,7 +403,7 @@ function helloWorld(world) {
 
   <slide class="logoslide dark nobackground">
     <article class="flexbox vcenter">
-      <span><img src="images/google_developers_logo_white.png"></span>
+      <span><img src="images/canonical_white.svg"></span>
     </article>
   </slide>
 
