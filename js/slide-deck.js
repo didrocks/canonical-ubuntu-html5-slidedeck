@@ -281,6 +281,14 @@ SlideDeck.prototype.toggleOverview = function() {
 /**
  * @private
  */
+SlideDeck.prototype.appendContact_ = function(contact, contactcontent) {
+  if (!contact) {
+    return contactcontent;
+  }
+  contactcontent.push(contact);
+  return contactcontent;
+}
+
 SlideDeck.prototype.loadConfig_ = function(config) {
   if (!config) {
     return;
@@ -334,25 +342,48 @@ SlideDeck.prototype.loadConfig_ = function(config) {
     if (presenters.length == 1) {
       var p = presenters[0];
 
-      html = [p.name, p.company].join('<br>');
-
-      var gplus = p.gplus ? '<span>g+</span><a href="' + p.gplus +
-          '">' + p.gplus.replace(/https?:\/\//, '') + '</a>' : '';
-
-      var twitter = p.twitter ? '<span>twitter</span>' +
-          '<a href="http://twitter.com/' + p.twitter + '">' +
-          p.twitter + '</a>' : '';
-
-      var www = p.www ? '<span>www</span><a href="' + p.www +
-                        '">' + p.www.replace(/https?:\/\//, '') + '</a>' : '';
-
-      var github = p.github ? '<span>github</span><a href="' + p.github +
-          '">' + p.github.replace(/https?:\/\//, '') + '</a>' : '';
-
-      var html2 = [gplus, twitter, www, github].join('<br>');
-
       if (dataConfigContact) {
-        dataConfigContact.innerHTML = html2;
+        var email = p.email ? '<span class="highlight">' + p.email + '</span>': '';
+
+        var gplus = p.gplus ? '<span>g+</span><a href="' + p.gplus +
+            '">' + p.gplus.replace(/https?:\/\//, '') + '</a>' : '';
+
+        var twitter = p.twitter ? '<span>twitter</span>' +
+            '<a href="http://twitter.com/' + p.twitter + '">' +
+            p.twitter + '</a>' : '';
+
+        var www = p.www ? '<span>www</span><a href="' + p.www +
+                          '">' + p.www.replace(/https?:\/\//, '') + '</a>' : '';
+
+        var launchpad = p.launchpad ? '<span>launchpad</span><a href="' + p.launchpad +
+            '">' + p.launchpad.replace(/https?:\/\//, '') + '</a>' : '';
+
+        var github = p.github ? '<span>github</span><a href="' + p.github +
+            '">' + p.github.replace(/https?:\/\//, '') + '</a>' : '';
+
+        var contactcontent = [];
+        for (var key in data = [p.name, email, gplus, twitter, www, launchpad, github]) {
+          contactcontent = this.appendContact_(data[key], contactcontent);
+        }
+
+        dataConfigContact.innerHTML = contactcontent.join('<br>');
+
+        if (this.config_.company) {
+          var companyInfo = this.config_.company;
+          var website = companyInfo.community_website ? 
+            '<a class="highlight" href="' + companyInfo.community_website +
+            '">' + companyInfo.community_website.replace(/https?:\/\//, '') + '</a>' : '';
+          var website2 = companyInfo.website ? 
+            '<a class="highlight" href="' + companyInfo.website +
+            '">' + companyInfo.website.replace(/https?:\/\//, '') + '</a>' : '';
+
+          var companycontent = [];
+          for (var key in data = [website, website2]) {
+            companycontent = this.appendContact_(data[key], companycontent);
+          }
+
+          dataConfigContact.innerHTML = dataConfigContact.innerHTML + '<br><br>' + companycontent.join('<br>');
+        }
       }
     } else {
       for (var i = 0, p; p = presenters[i]; ++i) {
@@ -367,10 +398,13 @@ SlideDeck.prototype.loadConfig_ = function(config) {
     var dataConfigPresenter = document.querySelector('[data-config-presenter]');
     if (dataConfigPresenter) {
       dataConfigPresenter.innerHTML = html;
-      if (settings.eventTitle) {
-        dataConfigPresenter.innerHTML = dataConfigPresenter.innerHTML + '<br>' +
-                                        settings.eventTitle;
-      }
+    }
+  }
+
+  if (settings.eventTitle) {
+    var dataEventTitle = document.querySelector('[data-config-eventtitle]');
+    if (dataEventTitle) {
+      dataEventTitle.innerHTML = settings.eventTitle;
     }
   }
 
