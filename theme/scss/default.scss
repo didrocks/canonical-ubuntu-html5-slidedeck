@@ -3,28 +3,40 @@
 @import "compass/css3/user-interface";
 
 $social-tags: '#yourhashtag';
-$brand-small-icon-size: 30px;
+$small-icon-size: 30px;
+
+$aubergine: #772953;
+$aubergine-dark: #2c001e;
+$orange: #dd4814;
 
 $gray-1: #e6e6e6;
 $gray-2: #a9a9a9;
 $gray-3: #797979;
 $gray-4: #515151;
 
-$brand-blue: rgb(67, 135, 253);
-$brand-blue-secondary: #3c8ef3;
-$brand-blue-secondary2: #2a7cdf;
+$brand-orange: $orange;
+$brand-orange-secondary: darken($orange, 5%);
+$brand-orange-secondary2: darken($orange, 10%);
 
-$brand-red: rgb(244, 74, 63);
-$brand-red-secondary: #e0543e;
-$brand-red-secondary2: #d94d3a;
+$brand-aubergine: $aubergine;
+$brand-aubergine-secondary: darken($aubergine, 5%);
+$brand-aubergine-secondary2: darken($aubergine, 10%);
 
-$brand-yellow: rgb(255, 209, 77);
-$brand-yellow-secondary: #f9cc46;
-$brand-yellow-secondary2: #f6c000;
+$blue: rgb(67, 135, 253);
+$blue-secondary: #3c8ef3;
+$blue-secondary2: #2a7cdf;
 
-$brand-green: rgb(13, 168, 97);
-$brand-green-secondary: #00a86d;
-$brand-green-secondary2: #009f5d;
+$red: rgb(244, 74, 63);
+$red-secondary: #e0543e;
+$red-secondary2: #d94d3a;
+
+$yellow: rgb(255, 209, 77);
+$yellow-secondary: #f9cc46;
+$yellow-secondary2: #f6c000;
+
+$green: rgb(13, 168, 97);
+$green-secondary: #00a86d;
+$green-secondary2: #009f5d;
 
 $slide-width: 900px;
 $slide-height: 700px;
@@ -37,7 +49,7 @@ $slide-tap-area-width: 100px;
 
 $article-content-top-padding: 45px;
 
-@mixin highlight-color($color: $brand-yellow) {
+@mixin highlight-color($color: $brand-orange) {
   -webkit-tap-highlight-color: $color;
   -moz-tap-highlight-color: $color;
   -ms-tap-highlight-color: $color;
@@ -57,7 +69,7 @@ $article-content-top-padding: 45px;
  */
 ::selection {
   color: white;
-  background-color: $brand-yellow;
+  background-color: $orange;
   @include text-shadow(none);
 }
 
@@ -97,7 +109,7 @@ body {
 
 slides > slide {
   display: none;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Ubuntu', Arial, sans-serif;
   font-size: 26px;
   color: $gray-3;
   //@include background(linear-gradient(white, white 85%, $gray-1));
@@ -161,12 +173,12 @@ slides > slide {
   }
 
   &.dark {
-    background: $gray-4 !important;
+    background: $aubergine-dark !important;
   }
 
   &:not(.nobackground) {
-    //background: white url(../../images/google_developers_icon_128.png) ($brand-small-icon-size * 2) 98% no-repeat;
-    //@include background-size($brand-small-icon-size $brand-small-icon-size);
+    //background: white url(../../images/ubuntu_cof_orange_bg.svg) ($small-icon-size * 2) 98% no-repeat;
+    //@include background-size($small-icon-size $small-icon-size);
 
     &:before {
       font-size: 12pt;
@@ -174,10 +186,10 @@ slides > slide {
       position: absolute;
       bottom: $slide-top-bottom-padding / 2;
       left: $slide-left-right-padding;
-      background: url(../../images/google_developers_icon_128.png) no-repeat 0 50%;
-      @include background-size($brand-small-icon-size $brand-small-icon-size);
-      padding-left: $brand-small-icon-size + 10;
-      height: $brand-small-icon-size;
+      background: url(../../images/ubuntu_cof_orange_bg.svg) no-repeat 0 50%;
+      @include background-size($small-icon-size $small-icon-size);
+      padding-left: $small-icon-size + 10;
+      height: $small-icon-size;
       line-height: 1.9;
     }
     &:after {
@@ -190,16 +202,16 @@ slides > slide {
     }
   }
 
-  &.title-slide {
-    &:after {
+  &.title-slide,&.thank-you-slide {
+    &:before {
       content: '';
-      background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
+      background: url(../../images/canonical_white.svg) no-repeat 100% 50%;
       @include background-size(contain);
       position: absolute;
-      bottom: $slide-top-bottom-padding;
-      right: $slide-top-bottom-padding;
-      width: 100%;
-      height: 60px;
+      top: $slide-top-bottom-padding;
+      left: $slide-left-right-padding;
+      width: 200px;
+      height: 40px;
     }
   }
 
@@ -295,36 +307,26 @@ slides.layout-faux-widescreen {
   }
 }
 
-b {
-  font-weight: 600;
-}
-
 a {
-  color: $brand-blue-secondary2;
+  color: $brand-aubergine;
   text-decoration: none;
-  border-bottom: 1px solid rgba(42, 124, 223, 0.5);
+  border-bottom: 1px solid $brand-aubergine-secondary;
 
   &:hover {
-    color: black !important;
+    color: $orange !important;
   }
 }
 
-h1, h2, h3 {
-  font-weight: 600;
-}
 
 h2 {
   font-size: 45px;
   line-height: 45px;
-  letter-spacing: -2px;
   color: $gray-4;
 }
 
 h3 {
   font-size: 30px;
-  letter-spacing: -1px;
   line-height: 2;
-  font-weight: inherit;
   color: $gray-3;
 }
 
@@ -342,7 +344,6 @@ ul {
 
       li:before {
         content: '-';
-        font-weight: 600;
       }
     }
   }
@@ -351,7 +352,6 @@ ul {
     content: '\00B7';
     margin-left: -1em;
     position: absolute;
-    font-weight: 600;
   }
 
   ul {
@@ -375,7 +375,6 @@ pre {
   font-size: 20px;
   line-height: 28px;
   padding: 10px 0 10px $slide-left-right-padding;
-  letter-spacing: -1px;
   margin-bottom: 20px;
   width: 106%;
   background-color: $gray-1;
@@ -445,41 +444,61 @@ button:not(:disabled):active {
   color: $gray-2;
 }
 
+.orange {
+  color: $brand-orange;
+}
+.orange2 {
+  color: $brand-orange-secondary;
+}
+.orange3 {
+  color: $brand-orange-secondary2;
+}
+
+.aubergine {
+  color: $brand-aubergine;
+}
+.aubergine2 {
+  color: $brand-aubergine-secondary;
+}
+.aubergine3 {
+  color: $brand-aubergine-secondary2;
+}
+
 .blue {
-  color: $brand-blue;
+  color: $blue;
 }
 .blue2 {
-  color: $brand-blue-secondary;
+  color: $blue-secondary;
 }
 .blue3 {
-  color: $brand-blue-secondary2;
+  color: $blue-secondary2;
 }
 .yellow {
-  color: $brand-yellow;
+  color: $yellow;
 }
 .yellow2 {
-  color: $brand-yellow-secondary;
+  color: $yellow-secondary;
 }
 .yellow3 {
-  color: $brand-yellow-secondary2;
+  color: $yellow-secondary2;
 }
 .green {
-  color: $brand-green;
+  color: $green;
 }
 .green2 {
-  color: $brand-green-secondary;
+  color: $green-secondary;
 }
 .green3 {
-  color: $brand-green-secondary2;
+  color: $green-secondary2;
 }
 .red {
-  color: $brand-red;
+  color: $red;
 }
 .red2 {
-  color: $brand-red-secondary;
+  color: $red-secondary;
 }
 .red3 {
-  color: $brand-red-secondary2;
+  color: $red-secondary2;
 }
 .gray {
   color: $gray-1;
@@ -513,7 +532,6 @@ table {
   border-bottom: 1px solid $gray-3;
 
   tr > td:first-child, th {
-    font-weight: 600;
     color: $gray-4;
   }
 
@@ -524,7 +542,7 @@ table {
   th {
     color: white;
     font-size: 18px;
-    @include background(linear-gradient(top, $brand-blue 40%, $brand-blue-secondary2 80%) no-repeat);
+    @include background(linear-gradient(top, $brand-aubergine 40%, $brand-aubergine-secondary2 80%) no-repeat);
   }
 
   td, th {
@@ -534,7 +552,7 @@ table {
 
   td.highlight {
     color: $gray-4;
-    @include background(linear-gradient(top, $brand-yellow 40%, $brand-yellow-secondary2 80%) no-repeat);
+    @include background(linear-gradient(top, $brand-orange 60%, $brand-orange-secondary2 90%) no-repeat);
   }
 
   &.rows {
@@ -571,7 +589,6 @@ article.smaller {
   p, ul {
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: 0;
   }
   table {
     td, th {
@@ -581,7 +598,6 @@ article.smaller {
   pre {
     font-size: 15px;
     line-height: 20px;
-    letter-spacing: 0;
   }
   q {
     font-size: 40px;
@@ -627,7 +643,7 @@ article.smaller {
 
 .prettyprint .str, /* string content */
 .prettyprint .atv { /* a markup attribute value */
-  color: $brand-green-secondary2; //rgb(0, 138, 53);
+  color: $green-secondary2; //rgb(0, 138, 53);
 }
 .prettyprint .kwd, /* a keyword */
 .prettyprint .tag { /* a markup tag name */
@@ -649,7 +665,7 @@ article.smaller {
 .prettyprint .atn, /* a markup attribute name */
 .prettyprint .dec,
 .prettyprint .var { /* a declaration; a variable name */
-  color: $brand-red-secondary2; //rgb(127, 0, 127);
+  color: $red-secondary2; //rgb(127, 0, 127);
 }
 .prettyprint .pln {
   color: $gray-4;
@@ -713,8 +729,8 @@ article.smaller {
 
       &.backdrop {
         //@include background(linear-gradient($gray-1, white 30%, white 60%, $gray-1));
-        @include background-image(radial-gradient(50% 50%, #b1dfff 0%,
-                                                  $brand-blue 600px));
+        @include background-image(radial-gradient(20% 20%, $aubergine 0%,
+                                                  $aubergine-dark 800px));
       }
 
       &.next {
@@ -838,7 +854,7 @@ article.smaller {
 .logoslide {
   img {
     width: 383px;
-    height: 92px;
+    height: 190px;
   }
 }
 
@@ -850,7 +866,7 @@ article.smaller {
     font-size: 60px;
   }
   h3 {
-    color: $gray-1;
+    color: $orange;
     line-height: 2.8;
   }
   hgroup {
@@ -860,7 +876,7 @@ article.smaller {
 }
 
 .thank-you-slide {
-  background: $brand-blue !important;
+  background: $aubergine-dark !important;
   color: white;
 
   h2 {
@@ -888,7 +904,7 @@ aside.gdbar {
   left: -1px;
   top: 125px;
   @include border-radius(0 10px 10px 0);
-  @include background(linear-gradient(left, $gray-1, $gray-1) no-repeat);
+  @include background(linear-gradient(left, $orange, $orange) no-repeat);
   @include background-size(0% 100%);
   @include transition(all 0.5s ease-out 0.5s); /* Better to transition only on background-size, but not sure how to do that with the mixin. */
 
@@ -922,19 +938,17 @@ aside.gdbar {
 .title-slide {
 
   hgroup {
-    bottom: 100px;
+    bottom: 50px;
 
     h1 {
       font-size: 65px;
       line-height: 1.4;
-      letter-spacing: -3px;
-      color: $gray-4;
+      color: white;
     }
 
     h2 {
       font-size: 34px;
-      color: $gray-2;
-      font-weight: inherit;
+      color: $orange;
     }
 
     p {
@@ -942,6 +956,11 @@ aside.gdbar {
       color: $gray-3;
       line-height: 1.3;
       margin-top: 2em;
+    }
+
+    p[data-config-eventtitle] {
+      color: $orange;
+      font-size: 25px;
     }
   }
 }
@@ -965,6 +984,9 @@ aside.gdbar {
   span {
     width: 115px;
     display: inline-block;
+  }
+  .highlight {
+    color: $orange !important;
   }
 }
 
