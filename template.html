@@ -31,6 +31,16 @@ URL: https://code.google.com/p/io-2012-slides
 <slides class="layout-widescreen">
 
   <slide class="logoslide nobackground">
+    <aside class="note">
+      <ul>
+        <li>Pressing 'h' highlights code snippets</li>
+        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
+        <li>Pressing 'f' toggles fullscreen viewing</li>
+        <li>Pressing 'w' toggles widescreen</li>
+        <li>Pressing 'o' toggles overview mode</li>
+        <li>Pressing 'ESC' toggles off these goodies</li>
+      </ul>
+    </aside>
     <article class="flexbox vcenter">
       <span><img src="images/ubuntu_with_title_orange.svg"></span>
     </article>
@@ -48,6 +58,334 @@ URL: https://code.google.com/p/io-2012-slides
       </div>
     </hgroup>
   </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Android developer story</h2>
+    </hgroup>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>bundles: sdk, emulator (armhf only by default)</p>
+        <p>Android studio are using system notification for gradle build support. It's doing a lot of parallel background task (like always building your applications)</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+    </hgroup>
+    <article class="smaller">
+      <p>There are two IDEs option for android developers. All those are cross-platforms.</p>
+      <ul class="build fade">
+        <li>ADT (android developer tools).</li>
+        <ul>
+          <li>Refactoring of eclipse + some bundles.</li>
+          <li>Clearly the most featured and used nowdays.</li>
+          <li>An alternative is installing eclipse with the adt plugin.</li>
+        </ul>
+        <li>Android Studio: based on intellij IDEA.</li>
+        <ul>
+          <li>First presented at google IO 2013.</li>
+          <li>Clearly where the google developer tools team effort is.</li>
+          <li>More than just the IDE: switch of build system, more integration.</li>
+          <li>Still in alpha (0.5.x).</li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>Installing different sdk, emulators, documentation and so on…</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Identifying problems</h3>
+    </hgroup>
+    <article>
+      <p>The setup itself is the biggest hurdle. From then, the developers knows the internal tools…</p>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <iframe data-src="https://developer.android.com"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>After the rickometer, this is the sadometer</li>
+          <li>Emphase on why running from a command line: no launcher icon</li>
+          <li>On docs and wiki, openjdk is treated as slow and java users needs to install the Sun/Oracle jvm</li>
+          <li>We imply developers are installing the jdk, not the jre.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Setup workflow</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <img src="pres-img/inlove.jpg" class="sadometer">
+        <li>Find, accept license agreement, download.
+          <img src="pres-img/inlove.jpg" class="sadometer">
+        </li>
+        <li>Unpack it.
+          <img src="pres-img/happy.jpg" class="sadometer">
+        </li>
+        <li>Try to run it:
+          <pre class="prettyprint lang-shell" data-lang="shell">
+$ cd ~/&lt;android dev tools path&gt;
+$ ./bin/android-studio</pre>
+          <img src="pres-img/enthousiast.jpg" class="sadometer">
+        </li>
+        <li>It fails
+          <ul>
+            <li>no java vm installed.</li>
+            <li>Looking at documtations, installing manually the Oracle jdk.</li>
+          </ul>
+          <img src="pres-img/surprised.jpg" class="sadometer">
+        </li>
+        <li>Restart it (from CLI still). On 64 bits machines:
+          <pre class="prettyprint lang-shell" data-lang="shell">
+$ ./bin/android-studio
+Unexpected exception 'Cannot run program "/home/&lt;path&gt;/sdk/platform-tools/adb": error=2 No such
+file or directory' while attempting to get adb version from /home/&lt;path&gt;/sdk/platform-tools/adb</pre>
+          <img src="pres-img/sad.jpg" class="sadometer">
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Hacks as install the 32 bits libs from older version of ubuntu or copying/unpackging tar.gz, or installing the 32 libs still available on the distro for 64 bits.</li>
+          <li>Not scalable for the day the options inside the ID for starting changes (the shell wrappers contains multiple options)</li>
+          <li>To be fair, there is an option in android studio to create an Unity launcher icon, but it's not pinned by default…</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Setup workflow</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li>After some research, I need to install:
+          <pre class="prettyprint lang-shell" data-lang="shell">
+$ sudo dpkg --add-architecture i386
+$ sudo apt-get update
+$ sudo apt-get install libncurses5:i386 libstdc++6:i386 zlib1g:i386</pre>
+Note that the Internet contains a lot of ugly hacks on that.
+          <img src="pres-img/verysad.jpg" class="sadometer">
+        </li>
+        <li>I pin the launcher icon. However… it's pinning some file path, with some java vms options and will always try to relaunch those.
+          <pre class="prettyprint">
+Name=<b>My Application - [~/AndroidStudioProjects/MyApplication] - Android Studio (Preview) 0.5.8</b>
+Icon=jetbrains-android-studio.png
+Path=/home/didrocks/tools
+Exec=<b>/usr/lib/jvm/java-8-oracle/bin/java -Xms128m -Xmx750m -XX:MaxPermSize=350m
+-XX:ReservedCodeCacheSize=96m -ea -Dsun.io.useCanonCaches=false -Djava.net.preferIPv4Stack=true
+-Didea.project.structure.max.errors.to.show=0 -Djsse.enableSNIExtension=false -XX:+UseCodeCacheFlushing
+-XX:+UseConcMarkSweepGC -XX:SoftRefLRUPolicyMSPerMB=50
+-XX:+HeapDumpOnOutOfMemoryError -Dawt.useSystemAAFontSettings=lcd -Djb.vmOptionsFile=./android-studio/bin/
+studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
+-Didea.paths.selector=AndroidStudioPreview -Didea.platform.prefix=AndroidStudio -Djb.restart.code=88
+com.intellij.idea.Main</b>
+</pre>
+          <img src="pres-img/censored.jpg" class="sadometer">
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Multiple commands that are downloading different parts, multiple part on the process. -> He even probably have some swear French words…</li>
+          <li>We don't have the whole control over the experience.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Setup workflow</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <img src="pres-img/censored.jpg" class="sadometer">
+        <li>First launch (so using terminal) of android studio and Eclipse needs to setup itself.
+          <ul>
+            <li>Downloading latest plugin, latest version of gradle (~100M)…</li>
+            <li>Also, sdk manager and the virtual machine have no or horrible low-resolution icons.</li>
+            <li>The menu isn't exported (IIRC, it was in 13.10, but buggy).</li>
+          </ul>
+          <img src="pres-img/censored.jpg" class="sadometer angry">
+        </li>
+        <p>We want to <span class="orange">give back this smile</span>!
+          <img src="pres-img/inlove.jpg" class="sadometer">
+        </p>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Android studio, 6 months ago was showing up an error at startup with intellij. This error isn't there anymore. Google vs Oracle?</li>
+          <li>A year ago, it took me a whole day to get Android studio fully working (I had to change the source code for paths… differents vm paths…</li>
+          <li>Eclipse was really really slow (not only adt, but the eclipse, dart editor, and so on… with openjdk</li>
+          <li>Separated the tests because the 2 ide are not working the same way</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>On java VM…</h3>
+    </hgroup>
+    <article class="smaller">
+      <p>GCJ not supported. Oracle vm not part of Ubuntu (distribution license issue). However, things have changed between openjdk and oracle jdk!</p>
+      <p>Eclipse:
+        <table>
+          <tr>
+            <th></th><th>Startup time</th><th>Project loaded time (incl. startup time)</th><th>Show preview time</th>
+          </tr>
+          <tr>
+            <td>openjdk (2 cores)</td><td>21s</td><td>44s</td><td>17s</td>
+          </tr>
+          <tr>
+            <td>oracle 1.7 (2 cores)</td><td>17s</td><td>38s</td><td>17s</td>
+          </tr>
+          <tr>
+            <td>openjdk (1 core)</td><td>20s</td><td>44s</td><td>17s</td>
+          </tr>
+          <tr>
+            <td>oracle 1.7 (1 core)</td><td>21s</td><td>49s</td><td>17s</td>
+          </tr>
+        </table>
+      </p>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Only with 2 cores, but different versions of oracle jvm</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>On java VM…</h3>
+    </hgroup>
+    <article class="smaller">
+      <p>Android Studio:
+        <table>
+          <tr>
+            <th></th><th>Startup time</th><th>Project loaded time (incl. startup time)</th><th>Initial build finished (incl. startup time)</th><th>Show preview time</th>
+          </tr>
+          <tr>
+            <td>openjdk 1.7</td><td>15-17s</td><td>1.45-1.49</td><td>2.17-2.24</td><td> &lt;1s</td>
+          </tr>
+          <tr>
+            <td>oracle 1.7</td><td>18s</td><td>1.57</td><td>2.30</td><td>2s</td>
+          </tr>
+          <tr>
+            <td>oracle 1.8</td><td>19s</td><td>2.10</td><td>2.47</td><td>2s</td>
+          </tr>
+        </table>
+      </p>
+    </article>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Once bootstrapped, the plug an android device part and iterate isn't that different. Hence the setup is important.</li>
+          <li>We could even think about download the latest x86 emulator and others, but let's focus on significant improvments first.</li>
+          <li>We will propobably have question on the langage, should we use Go? Can be longer to develop as no apt bindings for instance.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Proposal</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>Not a lot is needed to make the developer life setup way better. We can only focus on the setup experience this cycle.</li>
+        <li>We can skip the first whole part of the process, creating the ubuntu developer tool center.
+          <ul>
+            <li>Proposing for download and setup where the user wants (with sane defaults) adt or android studio (with the alpha flag). <span class="orange">Always the latest version.</span></li>
+            <li>Installing the openjdk vm and setup it up by default.</li>
+            <li>Setting up the needed quirks if on 64bits</li>
+            <li>Add a launcher icon and try to setup sdk/vms pre-launchers.</li>
+            <li>Upgrade mecanism and first setup download with SDK download is let to the great auto-update from those tools.</li>
+          </ul>
+        </li>
+        <li>It can be a simple command line tool, with a GUI if needed, letting you choose between options.</li>
+        <li>Can be easily extended to include other platforms, like <a href="https://www.dartlang.org/">dart</a>… maybe <a href="https://unity3d.com/">unity3d</a>…</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <ul>
+        <li>The SDK is part of the download, but it stays on google server…</li>
+      </ul>
+    </aside>
+    <hgroup>
+      <h2>Android developers</h2>
+      <h3>Challenges</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li>There is a license agreement that the user needs to acknowledge. It can be easily downloaded through the page.
+          <pre class="prettyprint">You may not use the SDK for any purpose not expressly permitted by this License Agreement. Except to the
+extent required by applicable third party licenses, you may not: (a) copy (except for backup purposes),
+modify, adapt, <b>redistribute</b>, decompile, reverse engineer, disassemble, or create derivative work
+of the SDK or any part of the SDK;
+          </pre>
+        </li>
+        <li>If we are downloading from the trusted source, we need to handle the ssl check and integrity through md5sum.
+          <ul>
+            <li>This also mean screenscrapping the webpage.</li>
+            <li>Risk of breakage, but seems to have a reliable structure</li>
+          </ul>
+        </li>
+      <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (eclipse) or 331MB (android studio).
+        <ul>
+          <li>Even if quite trivial, I do proposed we don't focus on sharing the SDK for people installing both.</li>
+        </ul>
+      </li>
+    </article>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Cloud developer story with juju</h2>
+    </hgroup>
+  </slide>
+
 
   <slide>
     <hgroup>
@@ -74,14 +412,6 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <p>A list where items build:</p>
-      <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
-      </ul>
       <p>Another list, but items fade as they build:</p>
       <ul class="build fade">
         <li>Hover over me!</li>
@@ -101,10 +431,6 @@ URL: https://code.google.com/p/io-2012-slides
         <li>To change that this, add <code>target="_self"</code> to the link.</li>
       </ul>
     </article>
-  </slide>
-
-  <slide hidden>
-    Hidden slides are left out of the presentation.
   </slide>
 
   <slide>

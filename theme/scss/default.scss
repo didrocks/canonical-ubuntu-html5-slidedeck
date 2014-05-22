@@ -941,7 +941,7 @@ aside.gdbar {
     bottom: 50px;
 
     h1 {
-      font-size: 65px;
+      font-size: 55px;
       line-height: 1.4;
       color: white;
     }
@@ -1102,4 +1102,15 @@ aside.gdbar {
   pre, code {
     font-family: monospace !important;
   }
+}
+
+.sadometer {
+  position: absolute;
+  right: 0px;
+  top: -170px;
+  height: 122px;
+  width: 122px;
+}
+.angry {
+  -webkit-filter: hue-rotate(296deg);
 }
