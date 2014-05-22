@@ -1,9 +1,9 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
-    eventTitle: 'Canonical sprint',
+    title: 'Opportunistic Developers on Ubuntu',
+    subtitle: 'Making Ubuntu the best development platform<br>(Android & cloud developers)',
+    eventTitle: 'Malta sprint',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
@@ -18,9 +18,9 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title, Canonical',
-    email: 'email@canonical.com'
+    name: 'Didier Roche',
+    company: 'Desktop team, Canonical',
+    email: 'didier.roche@canonical.com'
     /*gplus: 'http://plus.google.com/1234567890',
     twitter: '@yourhandle',
     www: 'http://www.you.com',
