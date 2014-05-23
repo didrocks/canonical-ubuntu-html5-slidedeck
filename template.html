@@ -78,17 +78,17 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Android developers</h2>
     </hgroup>
     <article class="smaller">
-      <p>There are two IDEs option for android developers. All those are cross-platforms.</p>
+      <p>There are two IDEs option for android developers. Both are cross-platforms.</p>
       <ul class="build fade">
         <li>ADT (android developer tools).</li>
         <ul>
-          <li>Refactoring of eclipse + some bundles.</li>
+          <li>Refactoring of eclipse + plugins + some bundles.</li>
           <li>Clearly the most featured and used nowdays.</li>
           <li>An alternative is installing eclipse with the adt plugin.</li>
         </ul>
         <li>Android Studio: based on intellij IDEA.</li>
         <ul>
-          <li>First presented at google IO 2013.</li>
+          <li>First presented at Google I/O 2013.</li>
           <li>Clearly where the google developer tools team effort is.</li>
           <li>More than just the IDE: switch of build system, more integration.</li>
           <li>Still in alpha (0.5.x).</li>
@@ -108,7 +108,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Identifying problems</h3>
     </hgroup>
     <article>
-      <p>The setup itself is the biggest hurdle. From then, the developers knows the internal tools…</p>
+      <p>The setup itself is the biggest hurdle. From then, the developers knows the android tools…</p>
     </article>
   </slide>
 
@@ -152,7 +152,7 @@ $ ./bin/android-studio</pre>
         <li>It fails
           <ul>
             <li>no java vm installed.</li>
-            <li>Looking at documtations, installing manually the Oracle jdk.</li>
+            <li>Looking at documentations, installing manually the Oracle jdk.</li>
           </ul>
           <img src="pres-img/surprised.jpg" class="sadometer">
         </li>
@@ -160,7 +160,7 @@ $ ./bin/android-studio</pre>
           <pre class="prettyprint lang-shell" data-lang="shell">
 $ ./bin/android-studio
 Unexpected exception 'Cannot run program "/home/&lt;path&gt;/sdk/platform-tools/adb":
-error=2 No such file or directory' while attempting to get adb version from
+error=2 No such file or directory' while attempting to get hadb version from
 /home/&lt;path&gt;/sdk/platform-tools/adb</pre>
           <img src="pres-img/sad.jpg" class="sadometer">
         </li>
@@ -174,7 +174,7 @@ error=2 No such file or directory' while attempting to get adb version from
         <ul>
           <li>Hacks as install the 32 bits libs from older version of ubuntu or copying/unpackging tar.gz, or installing the 32 libs still available on the distro for 64 bits.</li>
           <li>Not scalable for the day the options inside the ID for starting changes (the shell wrappers contains multiple options)</li>
-          <li>To be fair, there is an option in android studio to create an Unity launcher icon, but it's not pinned by default…</li>
+          <li>To be fair, there is an option in Android Studio to create an Unity launcher icon, but it's not pinned by default…</li>
         </ul>
       </section>
     </aside>
@@ -189,7 +189,7 @@ error=2 No such file or directory' while attempting to get adb version from
 $ sudo dpkg --add-architecture i386
 $ sudo apt-get update
 $ sudo apt-get install libncurses5:i386 libstdc++6:i386 zlib1g:i386</pre>
-Note that the Internet contains a lot of ugly hacks on that.
+Note that the Internet contains a lot of ugly hacks on that issue.
           <img src="pres-img/verysad.jpg" class="sadometer">
         </li>
         <li>I pin the launcher icon. However… it's pinning some file path, with some java vms options and will always try to relaunch those.
@@ -231,10 +231,10 @@ studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
     <article class="smaller">
       <ul class="build">
         <img src="pres-img/censored.jpg" class="sadometer">
-        <li>First launch (so using terminal) of android studio and Eclipse needs to setup itself.
+        <li>First launch (so using terminal) of Android Studio and Eclipse needs to setup itself.
           <ul>
             <li>Downloading latest plugin, latest version of gradle (~100M)…</li>
-            <li>Also, sdk manager and the virtual machine have no or horrible low-resolution icons.</li>
+            <li>Also, SDK manager and the virtual machine have no or horrible low-resolution icons.</li>
             <li>The menu isn't exported (IIRC, it was in 13.10, but buggy).</li>
           </ul>
           <img src="pres-img/censored.jpg" class="sadometer angry">
@@ -262,7 +262,7 @@ studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
       <h3>On java VM…</h3>
     </hgroup>
     <article class="smaller">
-      <p>GCJ not supported. Oracle vm not part of Ubuntu (distribution license issue). However, things have changed between openjdk and oracle jdk!</p>
+      <p>GCJ not supported. Oracle VM not part of Ubuntu (distribution license issue). However, things have changed between openjdk and Oracle jdk!</p>
       <p>Eclipse:
         <table>
           <tr>
@@ -335,13 +335,13 @@ studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
     <article class="smaller">
       <ul>
         <li>Not a lot is needed to make the developer life setup way better. We can only focus on the setup experience this cycle.</li>
-        <li>We can skip the first whole part of the process, creating the <span class="orange">Ubuntu Developer Tool Center</span>.
+        <li>We can skip the first whole part of the painful process, creating the <span class="orange">Ubuntu Developer Tool Center</span>.
           <ul>
-            <li>Proposing for download and setup where the user wants (with sane defaults) adt or android studio (with the alpha flag). <span class="orange">Always the latest version.</span></li>
-            <li>Installing the openjdk vm and setup it up by default.</li>
-            <li>Setting up the needed quirks if on 64bits</li>
-            <li>Add a launcher icon and try to setup sdk/vms pre-launchers.</li>
-            <li>Upgrade mecanism and first setup download with SDK download is let to the great auto-update from those tools.</li>
+            <li>Proposing for download and setting up where the user wants (with sane defaults) adt or Android Studio (with the alpha flag). <span class="orange">Always the latest version.</span></li>
+            <li>Installing the openjdk VM and making it default.</li>
+            <li>Setting up the needed quirks if on 64 bits machines.</li>
+            <li>Add a launcher icon and try to setup SDK/VMs launchers.</li>
+            <li>Upgrade mecanism and first setup with SDK and build tools downloads is let to the great auto-update from those tools.</li>
           </ul>
         </li>
         <li>It can be a simple command line tool, with a GUI if needed, letting you choose between options.</li>
@@ -372,12 +372,12 @@ any part of the SDK;</pre>
         <li>If we are downloading from the trusted source, we need to handle the ssl check and integrity through md5sum.
           <ul>
             <li>This also mean screenscrapping the webpage.</li>
-            <li>Risk of breakage, but seems to have a reliable layout</li>
+            <li>Risk of breakage, but seems to have a straightforward layout.</li>
           </ul>
         </li>
-      <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (eclipse) or 331MB (android studio).
+      <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (Eclipse) or 331MB (Android Studio).
         <ul>
-          <li>Even if quite trivial, I do propose we don't focus on sharing the SDK for people installing both.</li>
+          <li>Even if quite trivial, I do propose we don't focus on sharing the SDK for people installing both IDEs.</li>
         </ul>
       </li>
     </article>
@@ -473,22 +473,22 @@ any part of the SDK;</pre>
     </aside>
     <hgroup>
       <h2>Cloud developers</h2>
-      <h3>Summing up challenges/issues</h3>
+      <h3>Summing up issues for that target developer audience</h3>
     </hgroup>
     <article class="smaller">
       <ul class="build">
-        <li>A lot of notions to learn with
+        <li>A lot of notions to learn just to start with it.
           <ul>
-            <li>No clear entry point apart from ready the whole juju documentation</li>
-            <li>Most examples on the <a href="https://juju.ubuntu.com/docs/">official documentation</a> are only boostrap and simple ones</li>
+            <li>No clear entry point apart from reading the whole juju documentation.</li>
+            <li>Most examples on the <a href="https://juju.ubuntu.com/docs/">official documentation</a> are only boostrap and trivial ones.</li>
             <li>Not all notions are integrated to juju.</li>
           </ul>
         </li>
-        <li>Puzzling choices: juju vs juju-core, ppa stable.</li>
+        <li>Puzzling choices: juju vs juju-core, stable ppa, cloud repository…</li>
         <li>Not very well maintained in distro.</li>
         <li>On <span class="orange">14.04 LTS</span>, we download <span class="orange">precise</span> charms by default.</li>
         <li>Local or locally shared charm store is possible, but the layout isn't flexible and contains codename.</li>
-        <li>Bundles can't be used locally, only if shared on launchpad.</li>
+        <li>Bundles can't be used locally, only if shared on Launchpad.</li>
       </ul>
     </article>
   </slide>
@@ -505,18 +505,18 @@ any part of the SDK;</pre>
     </aside>
     <hgroup>
       <h2>Cloud developers</h2>
-      <h3>Summing up challenges/issues</h3>
+      <h3>Summing up issues for that target developer audience</h3>
     </hgroup>
     <article class="smaller">
       <ul class="build">
         <li>No unified ways in the charm to point to some code.
           <ul class="build">
-            <li>Not easy to iterate over some code.</li>
+            <li>Not easy to quickly iterate over some code.</li>
             <li>Some charms are even broken.</li>
-            <li>Not unified story to update the code.</li>
-            <li>Not unified story to run upgrade scripts and handle migrations.</li>
-            <li>Some charms are pulling from distro, some from ppa, very few from upstream or give the possibility to choose version.</li>
-            <li>Also, we want those services or framework to be upgradable</li>
+            <li>Not unified story to quickly update the code.</li>
+            <li>Not unified story to quickly run upgrade scripts and handle migrations.</li>
+            <li>Some charms are pulling from distro, some from ppas, very few from upstream or give the possibility to quickly choose any version.</li>
+            <li>Also, we want those services or framework to be quickly upgradable.</li>
           </ul>
         </li>
         <li>Very weak and not guided shell completion not helping giving clear advancement path.
@@ -532,23 +532,23 @@ any part of the SDK;</pre>
   <slide>
     <hgroup>
       <h2>Cloud developers</h2>
-      <h3>Summing up challenges/issues</h3>
+      <h3>Summing up issues for that target developer audience</h3>
     </hgroup>
     <article class="smaller">
       <ul class="build">
         <li>Juju quickstart is one way forward, alas…
           <ul class="build">
             <li>The dev environment is started at boot time.</li>  
-            <li>If you create a second local environment, the  dev environment is though started at boot time.</li>  
+            <li>If you create a second local environment, everything explodes.</li>  
             <li>It relies on the juju-gui for installing and discovering services.</li>
-            <li>There are some ssl identification issues. Also, the welcoming one tour is shown.</li>
+            <li>There are some ssl identification issues. Also, the welcoming tour is shown.</li>
           </ul>
         </li>
         <li>Misc:
           <ul>
             <li>The whole local environment is running as root (lxc, upstart jobs).</li>
             <li>Juju doesn't really feedback when "things are happening" or "things are stucked".</li>
-            <li>There is no "my environment is setup" signals.</li>
+            <li>There is no "my environment is ready" signals.</li>
             <li>Some features just error on local environment, like juju debug-log (known for a year).</li>
             <li>Removing a service from the gui doesn't tear down the machine.</li>
           </ul>
@@ -591,8 +591,8 @@ any part of the SDK;</pre>
     </hgroup>
     <article class="smaller">
       <ul class="build">
-        <li class="orange">Juju is focused on sys admins more than opportunistic developers</li>
-        <li>We focus on a set of developer experience we want to support first
+        <li class="orange">Juju is focused on sys admins more than opportunistic developers.</li>
+        <li>We focus on a set of developer experience we want to support first:
           <ul>
             <li>nodejs (adding apps, modules)</li>
             <li>wordpress (adding plugins, themes, hacking on it)</li>
@@ -601,7 +601,14 @@ any part of the SDK;</pre>
             <li>extras: golang? dart?</li>
           </ul>
         </li>
-        <li>Easy, one command setup, telling "I want to quickly deploy X", setting up ssh, local environment. Always default to latest LTS and use official names.</li>
+        <li>Easy, one command setup:
+          <ul>
+            <li>I want to quickly deploy X</li>
+            <li>setting up ssh</li>
+            <li>creating the local environment</li>
+            <li>Always default to latest LTS and use official names.</li>
+          </ul>
+        </li>
       </ul>
     </article>
   </slide>
@@ -623,11 +630,11 @@ any part of the SDK;</pre>
           <ul>
             <li>Propose this set of selected bundles/appliances (don't want to even talk about charms, exposing services).</li>
             <li>Be able to add your own bundle, pointing to your own charms from a cross-team work.</li>
-            <li>Having very few limited options to between and tweak those.</li>
-            <li>Be able to specify which version of X or Y I want install. <span class="orange">Default is upstream source. Not distribution.</span></li>
-            <li>Promoting way developers are normally developping. Like virtualenv / rvm.</li>
-            <li>Be able to pull from github/launchpdad.</li>
-            <li>I want the environment/setup to be similar before all those options.</li>
+            <li>Having very few limited options to choose between and tweak sane defaults.</li>
+            <li>Be able to specify which version of X or Y I want to install. <span class="orange">Default is upstream source. Not distribution.</span></li>
+            <li>Promoting ways developers are normally developping. Like virtualenv / rvm.</li>
+            <li>Be able to pull from github/launchpad.</li>
+            <li>I want the environment/setup to be similar betwenn all those options.</li>
           </ul>
         </li>
         <li>This local environment only starts when I cd/swich to my project.</li>
@@ -646,15 +653,19 @@ any part of the SDK;</pre>
         <li>On each projects/environment
           <ul>
             <li>I want to be able to iterate quickly (ideally save and reload/autoreload, restarting server automatically in django).</li>
-            <li>I want to be able to refresh or update the global framework/service versions.</li>
-            <li>I want to be able to push my work to centralize system like github or launchpad.</li>
+            <li>I want to be able to quickly refresh or update the global framework/service versions.</li>
+            <li>I want to be able to quickly push my work to centralize system like github or launchpad.</li>
           </ul>
         </li>
       </ul>
     </article>
   </slide>
 
-  <slide class="nobackground" style="background-image: url(pres-img/quickly.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/quickly.png)">
+    <aside class="note">
+      <p>Actually, Quickly was not just a scalfolding tool, it was more a workflow tools. Only proposing what makes sense (even starting from shell completion) at the right time. I think we want to guide and bring a similar functionality to juju. So what about…</p>
+    </aside>
+  </slide>
 
   <slide>
     <aside class="note">
@@ -699,6 +710,11 @@ any part of the SDK;</pre>
   </slide>
 
   <slide>
+    <aside class="note">
+      <ul>
+        <li>You will note the vision is docker-compatible</li>
+      </ul>
+    </aside>
     <hgroup>
       <h2>Cloud developers</h2>
       <h3>Longer term…</h3>
@@ -706,12 +722,12 @@ any part of the SDK;</pre>
     <article class="smaller">
       <ul>
         <li>Pushing work on centralize github or launchpad system.</li>
-        <li>Start thinking about a migration work.</li>
+        <li>Start thinking about how migration works.</li>
         <li>Pushing and scaling easy commands (through juju quickly).</li>
         <li>Having all charms tested with amulet, running regularly in a DC with latest upstream and a set of blessed versions.</li>
         <li>How to promote those charms and be more visible in the charm store?</li>
         <li>Work on all those small bugs, like debug-log not working locally, shell completion…</li>
-        <li>Work on a container/docker story?</li>
+        <li>Work on a container/docker/vagrant story?</li>
         <li>Easy integration of developer work in CI systems like Travis.</li>
       </ul>
     </article>
@@ -735,11 +751,28 @@ any part of the SDK;</pre>
     </hgroup>
     <article class="smaller">
       <ul>
-        <li>Juju upstreams have a completely different focus and priorities. However, they are really welcoming some changes that were proposed, if we work on it.</li>
-        <li>There are a lot of work in different areas and code. We have to pick our battles.</li>
-        <li>We have to involve developers community to get regular feedback and try to involve them (in particular in the charm/bundle part).</li>
+        <li>Juju upstreams have a completely different focus and priorities. However, they are really welcoming changes that were proposed, if we work on it.</li>
+        <li>There are a lot of work to be done in different areas and code. We have to pick our battles.</li>
+        <li>We have to involve developers community to get regular feedback and try to get them on board to use/attract them (in particular in the charm/bundle part).</li>
         <li>Especially as we will try to introduce best practices on charm, we need to keep the ecosystem cloud team involved.</li>
+        <li>We need to take care of keeping developers safe (checking ssl certificates and so on) while downloading from upstream. We can factorize that in charms tools. As well integrity checks and trying to find common pattern for downloading a specific version.</li>
       </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Backporting to trusty</h2>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>I propose to start with a ppa and iterate from there</li>
+        <li>Then, using -backports (at least for <span class="orange">juju-quickly</span> and the <span class="orange">Ubuntu Developer Tools Center</span>).
+          <ul>
+            <li>However, we have a risk of rejection/push back when NEWing as it's pulling things outside of the archive.</li>
+            <li>The work done in the Unity8 desktop session on 14.04 LTS will probably help on that topic.</li>
+          </ul>
+        </li>
     </article>
   </slide>
 
