@@ -123,6 +123,7 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <ul>
           <li>After the rickometer, this is the sadometer</li>
+          <li>He wants to quickly get a working environment</li>
           <li>Emphase on why running from a command line: no launcher icon</li>
           <li>On docs and wiki, openjdk is treated as slow and java users needs to install the Sun/Oracle jvm</li>
           <li>We imply developers are installing the jdk, not the jre.</li>
@@ -158,8 +159,9 @@ $ ./bin/android-studio</pre>
         <li>Restart it (from CLI still). On 64 bits machines:
           <pre class="prettyprint lang-shell" data-lang="shell">
 $ ./bin/android-studio
-Unexpected exception 'Cannot run program "/home/&lt;path&gt;/sdk/platform-tools/adb": error=2 No such
-file or directory' while attempting to get adb version from /home/&lt;path&gt;/sdk/platform-tools/adb</pre>
+Unexpected exception 'Cannot run program "/home/&lt;path&gt;/sdk/platform-tools/adb":
+error=2 No such file or directory' while attempting to get adb version from
+/home/&lt;path&gt;/sdk/platform-tools/adb</pre>
           <img src="pres-img/sad.jpg" class="sadometer">
         </li>
       </ul>
@@ -192,17 +194,19 @@ Note that the Internet contains a lot of ugly hacks on that.
         </li>
         <li>I pin the launcher icon. However… it's pinning some file path, with some java vms options and will always try to relaunch those.
           <pre class="prettyprint">
-Name=<b>My Application - [~/AndroidStudioProjects/MyApplication] - Android Studio (Preview) 0.5.8</b>
+Name=<b>My Application - [~/AndroidStudioProjects/MyApplication] - Android Studio
+(Preview) 0.5.8</b>
 Icon=jetbrains-android-studio.png
 Path=/home/didrocks/tools
 Exec=<b>/usr/lib/jvm/java-8-oracle/bin/java -Xms128m -Xmx750m -XX:MaxPermSize=350m
--XX:ReservedCodeCacheSize=96m -ea -Dsun.io.useCanonCaches=false -Djava.net.preferIPv4Stack=true
--Didea.project.structure.max.errors.to.show=0 -Djsse.enableSNIExtension=false -XX:+UseCodeCacheFlushing
--XX:+UseConcMarkSweepGC -XX:SoftRefLRUPolicyMSPerMB=50
--XX:+HeapDumpOnOutOfMemoryError -Dawt.useSystemAAFontSettings=lcd -Djb.vmOptionsFile=./android-studio/bin/
+-XX:ReservedCodeCacheSize=96m -ea -Dsun.io.useCanonCaches=false
+-Djava.net.preferIPv4Stack=true -Didea.project.structure.max.errors.to.show=0
+-Djsse.enableSNIExtension=false -XX:+UseCodeCacheFlushing -XX:+UseConcMarkSweepGC
+-XX:SoftRefLRUPolicyMSPerMB=50 -XX:+HeapDumpOnOutOfMemoryError
+-Dawt.useSystemAAFontSettings=lcd -Djb.vmOptionsFile=./android-studio/bin/
 studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
--Didea.paths.selector=AndroidStudioPreview -Didea.platform.prefix=AndroidStudio -Djb.restart.code=88
-com.intellij.idea.Main</b>
+-Didea.paths.selector=AndroidStudioPreview -Didea.platform.prefix=AndroidStudio
+-Djb.restart.code=88 com.intellij.idea.Main</b>
 </pre>
           <img src="pres-img/censored.jpg" class="sadometer">
         </li>
@@ -216,6 +220,7 @@ com.intellij.idea.Main</b>
         <ul>
           <li>Multiple commands that are downloading different parts, multiple part on the process. -> He even probably have some swear French words…</li>
           <li>We don't have the whole control over the experience.</li>
+          <li>Quickly, his sadness increased more and more…</li>
         </ul>
       </section>
     </aside>
@@ -234,7 +239,7 @@ com.intellij.idea.Main</b>
           </ul>
           <img src="pres-img/censored.jpg" class="sadometer angry">
         </li>
-        <p>We want to <span class="orange">give back this smile</span>!
+        <p>We want to <span class="orange">give back that smile</span>!
           <img src="pres-img/inlove.jpg" class="sadometer">
         </p>
       </ul>
@@ -317,7 +322,7 @@ com.intellij.idea.Main</b>
     <aside class="note">
       <section>
         <ul>
-          <li>Once bootstrapped, the plug an android device part and iterate isn't that different. Hence the setup is important.</li>
+          <li>Once bootstrapped, pluggin an android device and iterate isn't that different. Hence the setup is important as a first focus.</li>
           <li>We could even think about download the latest x86 emulator and others, but let's focus on significant improvments first.</li>
           <li>We will propobably have question on the langage, should we use Go? Can be longer to develop as no apt bindings for instance.</li>
         </ul>
@@ -330,7 +335,7 @@ com.intellij.idea.Main</b>
     <article class="smaller">
       <ul>
         <li>Not a lot is needed to make the developer life setup way better. We can only focus on the setup experience this cycle.</li>
-        <li>We can skip the first whole part of the process, creating the ubuntu developer tool center.
+        <li>We can skip the first whole part of the process, creating the <span class="orange">Ubuntu Developer Tool Center</span>.
           <ul>
             <li>Proposing for download and setup where the user wants (with sane defaults) adt or android studio (with the alpha flag). <span class="orange">Always the latest version.</span></li>
             <li>Installing the openjdk vm and setup it up by default.</li>
@@ -358,362 +363,383 @@ com.intellij.idea.Main</b>
     <article class="smaller">
       <ul class="build">
         <li>There is a license agreement that the user needs to acknowledge. It can be easily downloaded through the page.
-          <pre class="prettyprint">You may not use the SDK for any purpose not expressly permitted by this License Agreement. Except to the
-extent required by applicable third party licenses, you may not: (a) copy (except for backup purposes),
-modify, adapt, <b>redistribute</b>, decompile, reverse engineer, disassemble, or create derivative work
-of the SDK or any part of the SDK;
-          </pre>
+          <pre class="prettyprint">You may not use the SDK for any purpose not expressly permitted by this License 
+Agreement. Except to the extent required by applicable third party licenses, you may
+not: (a) copy (except for backup purposes), modify, adapt, <b>redistribute</b>,
+decompile, reverse engineer, disassemble, or create derivative work of the SDK or
+any part of the SDK;</pre>
         </li>
         <li>If we are downloading from the trusted source, we need to handle the ssl check and integrity through md5sum.
           <ul>
             <li>This also mean screenscrapping the webpage.</li>
-            <li>Risk of breakage, but seems to have a reliable structure</li>
+            <li>Risk of breakage, but seems to have a reliable layout</li>
           </ul>
         </li>
       <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (eclipse) or 331MB (android studio).
         <ul>
-          <li>Even if quite trivial, I do proposed we don't focus on sharing the SDK for people installing both.</li>
+          <li>Even if quite trivial, I do propose we don't focus on sharing the SDK for people installing both.</li>
         </ul>
       </li>
     </article>
   </slide>
 
 
-  <slide class="segue dark nobackground">
+  <slide class="segue dark quote nobackground">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>I want first to say that the juju team did some fantastic work… Only pointing to some gotchas due to lack of focus on that use case.</li>
+          <li>I have a little bit of background and listen to many web developers podcasts</li>
+          <li>I have tried in multiples vm, trying to be the naïve developers on ubuntu.</li>
+          <li>I have interviewed quite some people with different perspectives…</li>
+          <li>Some teams like the U1 team does have specialists… Some developers are working locally, but it's hard for them…</li>
+          <li>The CI team doesn't even use the local provider.</li>
+          <li>All the feedback and what I realized myself are pointing at the same directions: the issues are mostly aroung setup (time to get something up) and iterations.</li>
+        </ul>
+      </section>
+    </aside>
     <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <hgroup class="auto-fadein">
       <h2>Cloud developer story with juju</h2>
     </hgroup>
+      <div class="author build">
+        <div class="smaller">
+        Jorge Castro, Marco Ceppi, Martin Albisetti, Andy Doan, Evan Dandrea, Simon Davy
+        AndVincent Ladeuil, Francesco Banconi, Fabian Gallina, Christian Reis
+        </div>
+      </div>
   </slide>
+
+  <slide class="nobackground" style="background-image: url(pres-img/opportunistic_dev_intro.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/opportunistic_dev.png)">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Here is my good friend…</li>
+          <li>He isn't very skilled in this Linux thing, doesn't know what a distribution is or even ubuntu.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+  <slide class="nobackground" style="background-image: url(pres-img/opportunistic_dev_web.png)">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>However, he's writing really good web applications. He has a lot of friends developping services which are in the same case…</li>
+          <li>He and his friends are using Mac. It's simple for them! The command line tool is working well and is simple.</li>
+          <li>They are dealing with some servers but not too much. They don't really know how to developer or scale their wordpress/django work in the cloud. Openstack is clearly a foreign name for him.</li>
+          <li>VCS is the limit of what he can bare with. They don't really have a deployment procedure as they manage servers by hands.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="nobackground" style="background-image: url(pres-img/headache0.png)">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>However, he heared about this "juju" thing, which is supposed's to do this openstack-cloudy stuff easily.</li>
+          <li>He's tempting to do it on mac, but he heared that it's from ubuntu and he should maybe try there. So, he's giving a look</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="nobackground" style="background-image: url(pres-img/headache1.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache2.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache3.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache4.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache5.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache6.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache7.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache8.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache9.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache10.png)"></slide>
+  <slide class="nobackground" style="background-image: url(pres-img/headache11.png)"></slide>
 
 
   <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Notions: charms, boostrap node, bundles, ppas, lxc, juju-deployer, exposing service, units, machines, ssh keys…</li>
+          <li>Also, if you run the command, you can be asked like "what relation do you want to implement? db or slave?", just by linking wordpress to mysql…</li>
+          <li>Examples in videos aren't really practicle: it's all about mediawiki!</li>
+          <li>For instance, bundle isn't integrated to juju at all (juju-quickstart is using juju-gui backend service which is talking to juju-deployer. juju-local isn't installed by default.</li>
+          <li>juju-local and juju-quickstart are stalling in pure trusty. No clear SRU policy despite the fix being there for 2 months now.</li>
+          <li>Local charm store is possible, but not flexible instance, bundle isn't integrated to juju at all and can't be local.</li>
+        </ul>
+      </section>
+    </aside>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>Cloud developers</h2>
+      <h3>Summing up challenges/issues</h3>
     </hgroup>
-    <article>
-      <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
+    <article class="smaller">
+      <ul class="build">
+        <li>A lot of notions to learn with
           <ul>
-            <li>Subtitle capitalization is title case</li>
+            <li>No clear entry point apart from ready the whole juju documentation</li>
+            <li>Most examples on the <a href="https://juju.ubuntu.com/docs/">official documentation</a> are only boostrap and simple ones</li>
+            <li>Not all notions are integrated to juju.</li>
           </ul>
         </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
+        <li>Puzzling choices: juju vs juju-core, ppa stable.</li>
+        <li>Not very well maintained in distro.</li>
+        <li>On <span class="orange">14.04 LTS</span>, we download <span class="orange">precise</span> charms by default.</li>
+        <li>Local or locally shared charm store is possible, but the layout isn't flexible and contains codename.</li>
+        <li>Bundles can't be used locally, only if shared on launchpad.</li>
       </ul>
     </article>
   </slide>
 
   <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Most charms relies on pushing to bzr or github!</li>
+          <li>Upgrading wordpress example: after wordpress is installed, I see “a new upgrade is available”. nice, a wordpress update? No, it’s a charm update. What’s this wordpress-21 where I got wordpress-20? Then upgrade service got cs:precise/wordpress-20, cs:precise/wordpress-19… and I can upgrade to them?</li>
+          <li>Broken charm: nodejs! Hardcoded path and not even a feedback that it failed!</li>
+        </ul>
+      </section>
+    </aside>
     <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Cloud developers</h2>
+      <h3>Summing up challenges/issues</h3>
     </hgroup>
-    <article>
-      <p>A list where items build:</p>
-      <p>Another list, but items fade as they build:</p>
-      <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
+    <article class="smaller">
+      <ul class="build">
+        <li>No unified ways in the charm to point to some code.
+          <ul class="build">
+            <li>Not easy to iterate over some code.</li>
+            <li>Some charms are even broken.</li>
+            <li>Not unified story to update the code.</li>
+            <li>Not unified story to run upgrade scripts and handle migrations.</li>
+            <li>Some charms are pulling from distro, some from ppa, very few from upstream or give the possibility to choose version.</li>
+            <li>Also, we want those services or framework to be upgradable</li>
+          </ul>
+        </li>
+        <li>Very weak and not guided shell completion not helping giving clear advancement path.
+          <ul class="build">
+            <li>In particular, once we finished our work, how to deploy? Where to deploy? How to scale without being an IT guru? How to have a local environment different from the productions ones?</li>
+            <li>Some charms are either "work" (adding plugins, changing themes) or "scale" like the wordpress one.</li>
+          </ul>
+        </li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
+      <h2>Cloud developers</h2>
+      <h3>Summing up challenges/issues</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li>Juju quickstart is one way forward, alas…
+          <ul class="build">
+            <li>The dev environment is started at boot time.</li>  
+            <li>If you create a second local environment, the  dev environment is though started at boot time.</li>  
+            <li>It relies on the juju-gui for installing and discovering services.</li>
+            <li>There are some ssl identification issues. Also, the welcoming one tour is shown.</li>
+          </ul>
+        </li>
+        <li>Misc:
+          <ul>
+            <li>The whole local environment is running as root (lxc, upstart jobs).</li>
+            <li>Juju doesn't really feedback when "things are happening" or "things are stucked".</li>
+            <li>There is no "my environment is setup" signals.</li>
+            <li>Some features just error on local environment, like juju debug-log (known for a year).</li>
+            <li>Removing a service from the gui doesn't tear down the machine.</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Download wordpress.</li>
+          <li>Not in reality, the orange statys for a long time!</li>
+          <li>What should I do? Deploy? and then, what IP address?</li>
+          <li>It doesn't work…</li>
+        </ul>
+      </section>
+    </aside>
+    <article>
+      <iframe data-src="https://jujucharms.com/sidebar/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>A lot of room for improvements</li>
+          <li>It will be hard to please everyone. Like the u1 team have dedicated charmers answering IS needs, which is to always take from distro. I think we can help them on the way, but not fully fullfilling their requirements.</li>
+          <li>What do we want to offer? What do we want to focus on?</li>
+          <li>we need to identify some developers use case (writing a nodejs app, writing a django app, writing a ruby application…) and gives all functionalities for local development, then being able to share environments between teams, easy and quick setup.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Target proposal</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li class="orange">Juju is focused on sys admins more than opportunistic developers</li>
+        <li>We focus on a set of developer experience we want to support first
+          <ul>
+            <li>nodejs (adding apps, modules)</li>
+            <li>wordpress (adding plugins, themes, hacking on it)</li>
+            <li>django (adding frameworks + apps)</li>
+            <li>ruby (adding frameworks + apps)</li>
+            <li>extras: golang? dart?</li>
+          </ul>
+        </li>
+        <li>Easy, one command setup, telling "I want to quickly deploy X", setting up ssh, local environment. Always default to latest LTS and use official names.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <ul>
+        <li>Users are overwhelmed by options and limitless flexibility -> Only show what I need when I need it.</li>
+        <li>Do the heavy lifting for me.</li>
+      </ul>
+    </aside>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Target proposal</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li>On what we deploy:
+          <ul>
+            <li>Propose this set of selected bundles/appliances (don't want to even talk about charms, exposing services).</li>
+            <li>Be able to add your own bundle, pointing to your own charms from a cross-team work.</li>
+            <li>Having very few limited options to between and tweak those.</li>
+            <li>Be able to specify which version of X or Y I want install. <span class="orange">Default is upstream source. Not distribution.</span></li>
+            <li>Promoting way developers are normally developping. Like virtualenv / rvm.</li>
+            <li>Be able to pull from github/launchpdad.</li>
+            <li>I want the environment/setup to be similar before all those options.</li>
+          </ul>
+        </li>
+        <li>This local environment only starts when I cd/swich to my project.</li>
+        <li>I can switch between different projects, and this will start the right environment and teardown the others.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Target proposal</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build">
+        <li>On each projects/environment
+          <ul>
+            <li>I want to be able to iterate quickly (ideally save and reload/autoreload, restarting server automatically in django).</li>
+            <li>I want to be able to refresh or update the global framework/service versions.</li>
+            <li>I want to be able to push my work to centralize system like github or launchpad.</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="nobackground" style="background-image: url(pres-img/quickly.png)"></slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Example of best practive: django with gunicorn.</li>
+          <li>IS rewrote their charms to follow some canonical policy, but most of them aren't shared publicly.</li>
+          <li>Some charms like mongodb really presents a wide range of configuration options. We need less or pick some.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Proposal/areas of work…</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build fade">
+        <li>Setup (<span class="orange">juju quickly</span> plugin), so, you install juju-quickly and you are done. It can potentially adds the ppa, create ssh keys…</li>
+        <li>Split juju-quickstart into a library to build juju quickly upon it.</li>
+        <li>Charms: define a charm template answering previous needs (pulling upstream, selecting version, be scalable) with unified options. They should be scalable and deployable.</li>
+        <li>Bundles: create some with the above charms and best practice around services.</li>
+        <li>Don't have to use root access for local development.</li>
+        <li>Add to juju quickly a way to select and deploy those (ncurses interface).</li>
+        <li>Bundles (work on juju-deployer, juju-gui, juju-quickstart): be able to deploy local bundles.</li>
+        <li>Work on juju-local, lxc, upstart services to not start on boot and be able to switch between multiple environments.</li>
+        <li>Work on juju-core to be able to have different configurations per environment (local with 1 units of each service, distant with more… local using the internal django server…).</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Proposal/areas of work…</h3>
+    </hgroup>
+    <article class="smaller">
+      <ul class="build fade">
+        <li>Ensure that fixes are SRUed.</li>
+        <li>Adding that to the <span class="orange">Ubuntu Developer Tools Center</span>.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Cloud developers</h2>
+      <h3>Longer term…</h3>
     </hgroup>
     <article class="smaller">
       <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
+        <li>Pushing work on centralize github or launchpad system.</li>
+        <li>Start thinking about a migration work.</li>
+        <li>Pushing and scaling easy commands (through juju quickly).</li>
+        <li>Having all charms tested with amulet, running regularly in a DC with latest upstream and a set of blessed versions.</li>
+        <li>How to promote those charms and be more visible in the charm store?</li>
+        <li>Work on all those small bugs, like debug-log not working locally, shell completion…</li>
+        <li>Work on a container/docker story?</li>
+        <li>Easy integration of developer work in CI systems like Travis.</li>
       </ul>
     </article>
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
-}
-</pre>
-
-<pre class="prettyprint lang-shell" data-lang="shell">
-$ a command line
-$ another command line
-</pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: orange }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
-    </article>
-  </slide>
-
-  <slide>
     <aside class="note">
       <section>
         <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
+          <li>They focus on very large scale deployment</li>
+          <li>Cooperation: for instance, the quickstart guys are happy to split in a library</li>
+          <li>It will be hard to please everyone. Like the u1 team have dedicated charmers answering IS needs, which is to always take from distro. I think we can help them on the way, but not fully fullfilling their requirements.</li>
+          <li>What do we want to offer? What do we want to focus on?</li>
+          <li>We need to identify some developers use case (writing a nodejs app, writing a django app, writing a ruby application…) and gives all functionalities for local development, then being able to share environments between teams, easy and quick setup.</li>
         </ul>
-        <p><b>Remember to say this tag line!</b></p>
       </section>
     </aside>
     <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Presenter Mode</h2>
-    </hgroup>
-    <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image</h2>
-    </hgroup>
-    <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Cloud developers</h2>
+      <h3>Challenges</h3>
     </hgroup>
     <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide Styles</h2>
-    </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
-        <ul>
-          <li class="orange">class="orange"</li>
-          <li class="orange2">class="orange2"</li>
-          <li class="orange3">class="orange3"</li>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
-          <li class="green3">class="green3"</li>
-          <li class="aubergine">class="aubergine"</li>
-          <li class="aubergine2">class="aubergine2"</li>
-          <li class="aubergine3">class="aubergine3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
-        </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
-    </article>
-  </slide>
-
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/ubuntu_cof_white_bg.svg"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Segue Slide  - ubuntu</h2>
-      <h3>Subtitle Placeholder - ubuntu</h3>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
-
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/ubuntu_cof_white_bg.svg"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Iframe</h2>
-    </hgroup>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
+      <ul>
+        <li>Juju upstreams have a completely different focus and priorities. However, they are really welcoming some changes that were proposed, if we work on it.</li>
+        <li>There are a lot of work in different areas and code. We have to pick our battles.</li>
+        <li>We have to involve developers community to get regular feedback and try to involve them (in particular in the charm/bundle part).</li>
+        <li>Especially as we will try to introduce best practices on charm, we need to keep the ecosystem cloud team involved.</li>
+      </ul>
     </article>
   </slide>
 
@@ -721,6 +747,7 @@ $ another command line
     <aside class="gdbar right"><img src="images/ubuntu_cof_white_bg.svg"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>Thank You!</h2>
+      Link: <a href="https://docs.google.com/a/canonical.com/document/d/1ZomgoQRLqi411ftgH_lLep5qk5xcswFDzF3XBPuKOu8/edit#">(raw) references</a>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
