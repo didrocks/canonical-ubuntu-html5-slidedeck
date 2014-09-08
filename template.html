@@ -72,6 +72,7 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <p>bundles: sdk, emulator (armhf only by default)</p>
         <p>Android studio are using system notification for gradle build support. It's doing a lot of parallel background task (like always building your applications)</p>
+        <p>Eclipse doesn't have a lot of work recently apart from implementing the gradle support into it. However eclipse and android studio projects are not compatible.</p>
       </section>
     </aside>
     <hgroup>
@@ -84,7 +85,7 @@ URL: https://code.google.com/p/io-2012-slides
         <ul>
           <li>Refactoring of eclipse + plugins + some bundles.</li>
           <li>Clearly the most featured and used nowdays.</li>
-          <li>An alternative is installing eclipse with the adt plugin.</li>
+          <li>An alternative is to install eclipse with the adt plugin.</li>
         </ul>
         <li>Android Studio: based on intellij IDEA.</li>
         <ul>
@@ -324,7 +325,7 @@ studio64.vmoptions -Xbootclasspath/a:./android-studio/bin/../lib/boot.jar
         <ul>
           <li>Once bootstrapped, pluggin an android device and iterate isn't that different. Hence the setup is important as a first focus.</li>
           <li>We could even think about download the latest x86 emulator and others, but let's focus on significant improvments first.</li>
-          <li>We will propobably have question on the langage, should we use Go? Can be longer to develop as no apt bindings for instance.</li>
+          <li>We will propobably have question on the langage, should we use Go? Can be longer to develop as no apt bindings for instance. No apt bindings, will conflict with next step.</li>
         </ul>
       </section>
     </aside>
@@ -369,17 +370,18 @@ not: (a) copy (except for backup purposes), modify, adapt, <b>redistribute</b>,
 decompile, reverse engineer, disassemble, or create derivative work of the SDK or
 any part of the SDK;</pre>
         </li>
-        <li>If we are downloading from the trusted source, we need to handle the ssl check and integrity through md5sum.
+        <li>If we are downloading from an external source, we need to handle the ssl check and integrity through md5sum.
           <ul>
             <li>This also mean screenscrapping the webpage.</li>
             <li>Risk of breakage, but seems to have a straightforward layout.</li>
           </ul>
         </li>
-      <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (Eclipse) or 331MB (Android Studio).
-        <ul>
-          <li>Even if quite trivial, I do propose we don't focus on sharing the SDK for people installing both IDEs.</li>
-        </ul>
-      </li>
+        <li>The SDK is way bigger than the IDE: 1.1G vs 186MB (Eclipse) or 331MB (Android Studio).
+          <ul>
+            <li>Even if quite trivial, I do propose we don't focus on sharing the SDK for people installing both IDEs.</li>
+          </ul>
+        </li>
+      </ul>
     </article>
   </slide>
 
@@ -394,7 +396,7 @@ any part of the SDK;</pre>
           <li>I have interviewed quite some people with different perspectives…</li>
           <li>Some teams like the U1 team does have specialists… Some developers are working locally, but it's hard for them…</li>
           <li>The CI team doesn't even use the local provider.</li>
-          <li>All the feedback and what I realized myself are pointing at the same directions: the issues are mostly aroung setup (time to get something up) and iterations.</li>
+          <li>All the feedback and what I realized myself are pointing at the same directions: the issues are mostly around setup (time to get something up) and iterations.</li>
         </ul>
       </section>
     </aside>
@@ -427,7 +429,7 @@ any part of the SDK;</pre>
         <ul>
           <li>However, he's writing really good web applications. He has a lot of friends developping services which are in the same case…</li>
           <li>He and his friends are using Mac. It's simple for them! The command line tool is working well and is simple.</li>
-          <li>They are dealing with some servers but not too much. They don't really know how to developer or scale their wordpress/django work in the cloud. Openstack is clearly a foreign name for him.</li>
+          <li>They are dealing with some servers but not too much. They don't really know how to develop or scale their wordpress/django work in the cloud. Openstack is clearly a foreign name for him.</li>
           <li>VCS is the limit of what he can bare with. They don't really have a deployment procedure as they manage servers by hands.</li>
         </ul>
       </section>
@@ -513,8 +515,8 @@ any part of the SDK;</pre>
           <ul class="build">
             <li>Not easy to quickly iterate over some code.</li>
             <li>Some charms are even broken.</li>
-            <li>Not unified story to quickly update the code.</li>
-            <li>Not unified story to quickly run upgrade scripts and handle migrations.</li>
+            <li>No unified story to quickly update the code.</li>
+            <li>No unified story to quickly run upgrade scripts and handle migrations.</li>
             <li>Some charms are pulling from distro, some from ppas, very few from upstream or give the possibility to quickly choose any version.</li>
             <li>Also, we want those services or framework to be quickly upgradable.</li>
           </ul>
@@ -578,7 +580,7 @@ any part of the SDK;</pre>
     <aside class="note">
       <section>
         <ul>
-          <li>A lot of room for improvements</li>
+          <li>A lot of room for improvements to make "juju for developers beings".</li>
           <li>It will be hard to please everyone. Like the u1 team have dedicated charmers answering IS needs, which is to always take from distro. I think we can help them on the way, but not fully fullfilling their requirements.</li>
           <li>What do we want to offer? What do we want to focus on?</li>
           <li>we need to identify some developers use case (writing a nodejs app, writing a django app, writing a ruby application…) and gives all functionalities for local development, then being able to share environments between teams, easy and quick setup.</li>
@@ -603,7 +605,7 @@ any part of the SDK;</pre>
         </li>
         <li>Easy, one command setup:
           <ul>
-            <li>I want to quickly deploy X</li>
+            <li>I want to quickly work on X</li>
             <li>setting up ssh</li>
             <li>creating the local environment</li>
             <li>Always default to latest LTS and use official names.</li>
@@ -634,7 +636,7 @@ any part of the SDK;</pre>
             <li>Be able to specify which version of X or Y I want to install. <span class="orange">Default is upstream source. Not distribution.</span></li>
             <li>Promoting ways developers are normally developping. Like virtualenv / rvm.</li>
             <li>Be able to pull from github/launchpad.</li>
-            <li>I want the environment/setup to be similar betwenn all those options.</li>
+            <li>I want the environment/setup to be similar between all those options.</li>
           </ul>
         </li>
         <li>This local environment only starts when I cd/swich to my project.</li>
@@ -683,12 +685,12 @@ any part of the SDK;</pre>
     </hgroup>
     <article class="smaller">
       <ul class="build fade">
-        <li>Setup (<span class="orange">juju quickly</span> plugin), so, you install juju-quickly and you are done. It can potentially adds the ppa, create ssh keys…</li>
-        <li>Split juju-quickstart into a library to build juju quickly upon it.</li>
+        <li>Use the ubuntu developer tools center. It can potentially adds the ppa, create ssh keys…</li>
+        <li>Split juju-quickstart into a library to build udtc upon it and reuse the same code.</li>
         <li>Charms: define a charm template answering previous needs (pulling upstream, selecting version, be scalable) with unified options. They should be scalable and deployable.</li>
         <li>Bundles: create some with the above charms and best practice around services.</li>
         <li>Don't have to use root access for local development.</li>
-        <li>Add to juju quickly a way to select and deploy those (ncurses interface).</li>
+        <li>Add a way to select and deploy those (ncurses interface).</li>
         <li>Bundles (work on juju-deployer, juju-gui, juju-quickstart): be able to deploy local bundles.</li>
         <li>Work on juju-local, lxc, upstart services to not start on boot and be able to switch between multiple environments.</li>
         <li>Work on juju-core to be able to have different configurations per environment (local with 1 units of each service, distant with more… local using the internal django server…).</li>
@@ -723,7 +725,7 @@ any part of the SDK;</pre>
       <ul>
         <li>Pushing work on centralize github or launchpad system.</li>
         <li>Start thinking about how migration works.</li>
-        <li>Pushing and scaling easy commands (through juju quickly).</li>
+        <li>Pushing and scaling easy commands.</li>
         <li>Having all charms tested with amulet, running regularly in a DC with latest upstream and a set of blessed versions.</li>
         <li>How to promote those charms and be more visible in the charm store?</li>
         <li>Work on all those small bugs, like debug-log not working locally, shell completion…</li>
@@ -739,9 +741,6 @@ any part of the SDK;</pre>
         <ul>
           <li>They focus on very large scale deployment</li>
           <li>Cooperation: for instance, the quickstart guys are happy to split in a library</li>
-          <li>It will be hard to please everyone. Like the u1 team have dedicated charmers answering IS needs, which is to always take from distro. I think we can help them on the way, but not fully fullfilling their requirements.</li>
-          <li>What do we want to offer? What do we want to focus on?</li>
-          <li>We need to identify some developers use case (writing a nodejs app, writing a django app, writing a ruby application…) and gives all functionalities for local development, then being able to share environments between teams, easy and quick setup.</li>
         </ul>
       </section>
     </aside>
@@ -762,17 +761,19 @@ any part of the SDK;</pre>
 
   <slide>
     <hgroup>
-      <h2>Backporting to trusty</h2>
+      <h2>Backporting to trusty and general considerations</h2>
     </hgroup>
     <article class="smaller">
       <ul>
         <li>I propose to start with a ppa and iterate from there</li>
-        <li>Then, using -backports (at least for <span class="orange">juju-quickly</span> and the <span class="orange">Ubuntu Developer Tools Center</span>).
+        <li>Then, using -backports.
           <ul>
             <li>However, we have a risk of rejection/push back when NEWing as it's pulling things outside of the archive.</li>
             <li>The work done in the Unity8 desktop session on 14.04 LTS will probably help on that topic.</li>
           </ul>
         </li>
+        <li>Knowing that the whole system is moving to other technologies, the code can be short-lived.</li>
+        <li>We need to build a community around it and not limit with the ubuntu community following our regular communication channels.</li>
     </article>
   </slide>
 
