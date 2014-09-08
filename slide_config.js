@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Opportunistic Developers on Ubuntu',
-    subtitle: 'Making Ubuntu the best development platform<br>(Android & cloud developers)',
+    subtitle: 'Making Ubuntu the best platform for developers<br>(Android & cloud devs)',
     eventTitle: 'Malta sprint',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
